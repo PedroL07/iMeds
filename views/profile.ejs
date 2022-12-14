@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <title>iMeds - Create patient</title>
+  <link
+    href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+    rel="stylesheet">
+  <link href="/css/sb-admin-2.min.css" rel="stylesheet">
+</head>
+
+<body id="page-top">
+  <!-- Page Wrapper -->
+  <div id="wrapper">
+
+    <!-- Sidebar -->
+    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+      <!-- Sidebar - Brand -->
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/profile">
+        <div class="sidebar-brand-icon rotate-n-15">
+          <i class="fas fa-laugh-wink"></i>
+        </div>
+        <div class="sidebar-brand-text mx-3">Hello, <%= user.userName %>
+        </div>
+      </a>
+
+      <!-- Divider -->
+      <hr class="sidebar-divider my-0">
+
+      <!-- Nav Item - Dashboard -->
+      <li class="nav-item">
+        <a class="nav-link" href="/profile">
+          <i class="fas fa-fw fa-tachometer-alt"></i>
+          <span>New patient</span></a>
+      </li>
+
+      <!-- Divider -->
+      <hr class="sidebar-divider">
+
+      <!-- Heading -->
+      <div class="sidebar-heading">
+        More details
+      </div>
+
+      <!-- Nav Item - Pages Collapse Menu -->
+      <li class="nav-item">
+        <a class="nav-link" href="/feed">
+          <span>All patients</span>
+        </a>
+
+      </li>
+
+      <!-- Nav Item - Utilities Collapse Menu -->
+
+
+      <!-- Divider -->
+      <hr class="sidebar-divider">
+
+      <!-- Heading -->
+      <div class="sidebar-heading">
+        Done for today ?
+      </div>
+
+      <!-- Nav Item - Pages Collapse Menu -->
+      <li class="nav-item active">
+        <a class="nav-link" href="/logout">
+
+          <span>Log out</span>
+        </a>
+
+
+        <!-- Nav Item - Charts -->
+
+
+        <!-- Divider -->
+        <hr class="sidebar-divider d-none d-md-block">
+
+        <!-- Sidebar Toggler (Sidebar) -->
+        <div class="text-center d-none d-md-inline">
+          <!-- <button class="rounded-circle border-0" id="sidebarToggle"></button> -->
+        </div>
+
+    </ul>
+
+    <!-- main content where the form and profiel img are -->
+    <div class="container text-center">
+
+
+      <div class="row">
+
+
+        <!-- left side  -->
+        <div class="col">
+          <h2>New Patients</h2>
+          <form action="/post/createPost" enctype="multipart/form-data" method="POST">
+            <div class="mb-3">
+              <label for="title" class="form-label">First name:</label>
+              <input type="text" class="form-control" id="title" name="title">
+            </div>
+
+            <div class="mb-3">
+              <label for="lastN" class="form-label">Last name:</label>
+              <input type="text" class="form-control" id="lastN" name="lastN">
+            </div>
+
+            <div class="mb-3">
+              <label for="dob" class="form-label">DOB:</label>
+              <input type="date" class="form-control" name="dob">
+            </div>
+
+            <div class="mb-3">
+              <label for="cell" class="form-label">Phone number</label>
+              <input type="tel" class="form-control" name="cell">
+            </div>
+
+            <select class="select mb-3" name="call" aria-label="Default select example">
+              <option selected>Does patient perfer a text or call ?</option>
+              <option name="call" value="Text">Text Message</option>
+              <option name="call" value="Call">Call</option>
+            </select>
+
+            <div class="mb-3">
+              <label for="time" class="form-label">Check in </label>
+              <input type="datetime-local" class="form-control" name="time">
+            </div>
+
+            <div class="mb-3">
+              <label for="date" class="form-label">Next check up ** Three months out</label>
+              <input type="datetime-local" class="form-control" name="date">
+            </div>
+
+            <div class="mb-3">
+              <label for="imgUpload" class="form-label">Profile image:</label>
+              <input type="file" class="form-control" id="imageUpload" name="file">
+            </div>
+
+            <div class="mb-3">
+              <label for="caption" class="form-label">Notes</label>
+              <textarea class="form-control" id="caption" name="caption"></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary" value="Upload">Submit</button>
+          </form>
+
+        </div>
+        <!-- left side ends -->
+
+        <!-- right side  -->
+        <div class="col">
+          <h2>Most recently created patient</h2>
+
+
+          <div class="card">
+            <div class="card-body">
+              <% for(var i=0; i<posts.length; i++) {%>
+                <% if (i==1) { %>
+                  <% break %>
+                    <% } %>
+                      <div class="container-fluid">
+                        <div class="container">
+                          <div class="row">
+                            <div class="card row col-sm" style="width: 15rem;">
+                              <img src="<%= posts[i].image%>" class="card-img-top img-fluid" alt="...">
+                              <div class="row">
+
+                              </div>
+                              <ul class="list-group list-group-flush">
+                                <li class="list-group-item">
+                                  <%= posts[i].title%>, <%= posts[i].lastN%>
+                                </li>
+                                <li class="list-group-item">DOB: <%= posts[i].dob%>
+                                </li>
+                                <li class="list-group-item">Initial Visit: <%= posts[i].time%>
+                                </li>
+                                <li class="list-group-item">Next Visit: <%= posts[i].date%>
+                                </li>
+                                <li class="list-group-item">Phone: <%= posts[i].cell%>
+                                </li>
+                              </ul>
+                              <div class="card-body">
+                                <a href="/post/<%= posts[i]._id%>" class="card-link">Profile</a>                            
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <% } %>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <!-- /.container-fluid -->
+
+
+    </div>
+    <!-- End of Main Content -->
+
+
+
+  </div>
+
+
+  </div>
+
+</body>
+
+</html>

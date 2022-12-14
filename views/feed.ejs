@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <title>iMeds</title>
+  <link
+    href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+    rel="stylesheet">
+
+  <!-- Custom styles for this template-->
+  <link href="/css/sb-admin-2.min.css" rel="stylesheet">
+</head>
+
+<body id="page-top">
+
+  <!-- Page Wrapper -->
+  <div id="wrapper">
+
+    <!-- Sidebar -->
+    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+      <!-- Sidebar - Brand -->
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/profile">
+        <div class="sidebar-brand-icon rotate-n-15">
+          <i class="fas fa-laugh-wink"></i>
+        </div>
+        <div class="sidebar-brand-text mx-3">Hello, <%= user.userName %></div>
+      </a>
+
+      <!-- Divider -->
+      <hr class="sidebar-divider my-0">
+
+      <!-- Nav Item - Dashboard -->
+      <li class="nav-item">
+        <a class="nav-link" href="/profile">
+          <i class="fas fa-fw fa-tachometer-alt"></i>
+          <span>New patient</span></a>
+      </li>
+
+      <!-- Divider -->
+      <hr class="sidebar-divider">
+
+      <!-- Heading -->
+      <div class="sidebar-heading">
+        More details
+      </div>
+
+      <!-- Nav Item - Pages Collapse Menu -->
+      <li class="nav-item">
+        <a class="nav-link" href="/feed">    
+          <span>All patients</span>
+        </a>
+        <a class="nav-link" href="/bad">    
+          <span>Staff</span>
+
+      </li>
+
+      <!-- Nav Item - Utilities Collapse Menu -->
+
+
+        <!-- Divider -->
+        <hr class="sidebar-divider">
+
+        <!-- Heading -->
+        <div class="sidebar-heading">
+          Done for today ?
+        </div>
+
+        <!-- Nav Item - Pages Collapse Menu -->
+      <li class="nav-item active">
+        <a class="nav-link" href="/logout">
+          
+          <span>Log out</span>
+        </a>
+
+
+        <!-- Nav Item - Charts -->
+
+
+        <!-- Divider -->
+        <hr class="sidebar-divider d-none d-md-block">
+
+        <!-- Sidebar Toggler (Sidebar) -->
+        <div class="text-center d-none d-md-inline">
+          <!-- <button class="rounded-circle border-0" id="sidebarToggle"></button> -->
+        </div>
+
+    </ul>
+
+  <!-- main content where the form and profiel img are -->
+  <div class="container text-center">
+
+    <div class="card shadow mb-4">
+      <div class="card-header py-3">
+          <h6 class="m-0 font-weight-bold text-primary">All Patients - Sorted</h6>
+      </div>
+      <div class="card-body">
+          <div class="table-responsive">
+            <% for(var i=0; i<posts.length; i++) {%>
+              <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" >
+
+                  <thead>
+                    
+                      <tr>
+                          <th>First Name</th>
+                          <th>Last Name</th>
+                          <th>DOB</th>
+                          <th>Cell</th>
+                          <th>Perfers</th>
+                          <th>Patient since</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      <tr>
+                        
+                          <td><a class="nav-link" href="/post/<%= posts[i]._id%>">
+          
+                            <span><%= posts[i].title%></span>
+                          </a></td>
+                          <td><%= posts[i].lastN%></td>
+                          <td><%= posts[i].dob%></td>
+                          <td><%= posts[i].cell%></td>
+                          <td><%= posts[i].call%></td>
+                          <td><%= posts[i].time%></td>
+                      </tr>
+                      
+                  </tbody>
+              </table>
+              <% } %>
+          </div>
+      </div>
+  </div>
+
+
+
+  </div>
+  <!-- End of Main Content -->
+
+
+
+  </div>
+ 
+
+  </div>
+
+</body>
+
+</html>
