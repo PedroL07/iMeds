@@ -23,6 +23,12 @@ module.exports = {
       
 };
 
+// tried to use crud notation in order to give users the ability to send the text at desired time. 
+// currently only works being hard coded in. 
+
+
+
+
 // const schedule = require("node-schedule");
 
 // module.exports = {
