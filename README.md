@@ -1,6 +1,8 @@
 # iMeds
 iMeds is a medical application that uses technology to connect with their patients in a  timely and convenient way for both the patients and the medical staff. This application is able to send automated text messages and calls which allows for quick communication. This in turn would reduce the need for patients to come into the clinic for routine updates. 
 
+#https://i-meds.cyclic.app/
+
 ![alt tag](iMedGithub.png)
 
 ## How It's Made:
