@@ -1,5 +1,5 @@
 const accountSid = "AC62ded13896f2e96cecbf16077af109ea";
-const authToken = "387e9f6b02055ad15e416271a3e3dda4";
+const authToken = "1d3dcce9b4b784cfb24e44f72ab47290";
 const client = require("twilio")(accountSid, authToken);
 const gVoice = '+17816914251';
 const twilioVoice = '+13466332747';
